@@ -1,5 +1,5 @@
 #vue-popup
-> Backdrop for vue.
+> popup for vue.
 
 ## props:
 
