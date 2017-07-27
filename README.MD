@@ -27,7 +27,7 @@ npm install smalleast/vue-popup --save
 
 + code:
 ```javascript
-import VuePopup from 'vue-Backdrop';
+import VuePopup from 'vue-popup';
 
 new Vue({
   el: '#app',
@@ -50,11 +50,17 @@ new Vue({
 ```
 <template>
   <aside class="dev">
-    <div class="popup">
-      <button v-on:click="_click()">show backdrop</button>
-    </div>
-    <VuePopup :visible="visible" :className="'zIndex'" :style="'z-index: 2;'"></VuePopup>
-  </aside>
+     <button class="button" v-on:click="_click()">show backdrop</button>
+     <VuePopup ref="vnp" :direction="'bottom'">
+       这是测试的数据
+       这是测试的数据
+       这是测试的数据
+       这是测试的数据
+       这是测试的数据
+       这是测试的数据
+       这是测试的数据
+     </VuePopup>
+   </aside>
 </template>
 ```
 

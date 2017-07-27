@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VuePopup from './components/vue-popup.vue'
+import Dev from './components/dev.vue'
 
 
 Vue.config.debug = true
@@ -8,18 +8,15 @@ Vue.config.devtools = true
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  components: {VuePopup},
+  components: {Dev},
   data () {
     return {}
   },
   methods: {
-    _click1(){
-      console.log('button');
-    }
   },
   render: function (createElement) {
     return createElement('div', [
-      createElement(VuePopup),
+      createElement(Dev),
     ])
   }
 });

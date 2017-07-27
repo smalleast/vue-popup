@@ -1,7 +1,11 @@
 <template>
-  <aside class="dev">
-    <div class="popup">
-      <button v-on:click="_click()">show backdrop</button>
+  <aside class="vue-popup-container" v-on:click="hide()">
+    <div class="popup"
+         :data-visible="visible"
+         :data-direction="direction"
+         v-on:transitionend="_onTransitionEnd()"
+    >
+      <slot></slot>
     </div>
     <VueBackdrop :visible="visible" :className="'zIndex'" ></VueBackdrop>
   </aside>
@@ -11,16 +15,27 @@
   export default {
     data() {
       return {
-        visible: false
+        visible: false,
+        hidden: true
       };
     },
-    props: {},
+    props: {
+      direction: {
+        type: String,
+        default: 'bottom'
+      }
+    },
     created(){
     },
     methods: {
-      _click(){
-        console.log(this.visible);
+      show(){
         this.visible = !this.visible;
+      },
+      hide(){
+        this.visible = false;
+      },
+      _onTransitionEnd(){
+
       }
     },
     components: {VueBackdrop}
@@ -30,6 +45,26 @@
   .popup {
     position: absolute;
     z-index: 11;
+    width: 100%;
+    border-top: 1px solid #f00;
+    background: #fff;
+    left: 0;
+    backface-visibility: hidden;
+    transition: transform 0.3s, -webkit-transform 0.3s;
+    &[data-direction=top] {
+      top: 0;
+      transform: translateY(-100%);
+      &[data-visible=true] {
+        transform: translateY(0);
+      }
+    }
+    &[data-direction=bottom] {
+      bottom: 0;
+      transform: translateY(100%);
+      &[data-visible=true] {
+        transform: translateY(0);
+      }
+    }
   }
 
   .zIndex {
