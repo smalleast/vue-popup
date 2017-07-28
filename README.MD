@@ -10,9 +10,6 @@
       },
       className: {
         type: String
-      },
-      style: {
-        type: String
       }
     },
 ```
